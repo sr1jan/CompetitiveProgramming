@@ -34,33 +34,50 @@ int main(){
     ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 
-    int t;
+    int t, ti=0;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
-        int p[n];
-        int mn=1e6, mx=0;
-        int rec=0;
+        ++ti;
+        int n, k;
+        cin>>n>>k;
+        vector<int> arr(n);
         for(int i=0; i<n; i++){
-            cin>>p[i];
-            if(i>0){
-                if((p[i]-p[i-1])<=2){
-                    ++rec;
-                }else{
-                    ++rec;
-                    mx = max(mx, rec);
-                    mn = min(mn, rec);
-                    rec = 0;
-                }
-            }
+            cin>>arr[i];
         }
 
-        ++rec;
-        mx = max(mx, rec);
-        mn = min(mn, rec);
+        ll sm = k*(k+1)/2;
+        int ans=0;
 
-        cout << mn << ' ' << mx << endl;
+        int i=0;
+        int j=i+1;
+        while(i<n){
+            if(arr[i]==k){
+                int c=1;
+                while(arr[j]==arr[j-1]-1 && j<n){
+                    ++j;
+                    ++c;
+                }
 
+                if(c==k){
+                    ++ans;
+                    i=j;
+                    j=i+1;
+                    continue;
+                }
+                else if(arr[j]==k){
+                    i=j;
+                    j=i+1;
+                    continue;
+                }else{
+                    i++;
+                    j=i+1;
+                    continue;
+                }
+            }
+            ++i, ++j;
+        }
+
+
+        cout << "Case #" << ti << ": " << ans << endl;
     }
 }

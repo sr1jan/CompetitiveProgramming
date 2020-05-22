@@ -34,33 +34,4 @@ int main(){
     ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 
-    int t;
-    cin>>t;
-    while(t--){
-        int n;
-        cin>>n;
-        int p[n];
-        int mn=1e6, mx=0;
-        int rec=0;
-        for(int i=0; i<n; i++){
-            cin>>p[i];
-            if(i>0){
-                if((p[i]-p[i-1])<=2){
-                    ++rec;
-                }else{
-                    ++rec;
-                    mx = max(mx, rec);
-                    mn = min(mn, rec);
-                    rec = 0;
-                }
-            }
-        }
-
-        ++rec;
-        mx = max(mx, rec);
-        mn = min(mn, rec);
-
-        cout << mn << ' ' << mx << endl;
-
-    }
 }

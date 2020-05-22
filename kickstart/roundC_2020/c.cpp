@@ -30,37 +30,43 @@ bool p_se_sort(pair<int,int> a, pair<int,int> b){
     return a.second<b.second;
 }
 
+void solve(){
+    int n;
+    cin>>n;
+    vector<int> arr(n);
+    int sum=0;
+    for(int i=0; i<n; i++){
+        cin>>arr[i]; 
+        sum+=abs(arr[i]);
+    } 
+
+    vector<int> psum(2*sum+1);
+    psum[sum]++;
+    ll cursum=0;
+    ll ans=0;
+
+    for(int i=0; i<n; i++){
+        cursum+=arr[i];
+
+        for(int j=0; j*j<=sum+cursum; j++){
+            ans += psum[sum+cursum - j*j];
+        }
+
+        psum[cursum+sum]++;
+    }
+
+    cout << ans << endl;
+}
+
 int main(){
     ios_base::sync_with_stdio(false); 
     cin.tie(NULL);
 
-    int t;
+    int t, ti=0;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
-        int p[n];
-        int mn=1e6, mx=0;
-        int rec=0;
-        for(int i=0; i<n; i++){
-            cin>>p[i];
-            if(i>0){
-                if((p[i]-p[i-1])<=2){
-                    ++rec;
-                }else{
-                    ++rec;
-                    mx = max(mx, rec);
-                    mn = min(mn, rec);
-                    rec = 0;
-                }
-            }
-        }
-
-        ++rec;
-        mx = max(mx, rec);
-        mn = min(mn, rec);
-
-        cout << mn << ' ' << mx << endl;
-
+        ++ti;
+        cout << "Case #" << ti << ": ";
+        solve();
     }
 }

@@ -37,30 +37,41 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
-        int p[n];
-        int mn=1e6, mx=0;
-        int rec=0;
+        int n, k;
+        cin>>n>>k;
+        vector<int> arr(n);
+        vector<int> mis(n, 0);
+        int c=0;
         for(int i=0; i<n; i++){
-            cin>>p[i];
-            if(i>0){
-                if((p[i]-p[i-1])<=2){
-                    ++rec;
-                }else{
-                    ++rec;
-                    mx = max(mx, rec);
-                    mn = min(mn, rec);
-                    rec = 0;
-                }
+            cin>>arr[i];
+            if(abs(arr[i]-(i+1))!=0){
+                ++c;
+                mis[i] = 1;
             }
         }
 
-        ++rec;
-        mx = max(mx, rec);
-        mn = min(mn, rec);
+        if(!c){
+            cout << 0 << endl;
+            continue;
+        }else if(c%3!=0){
+            cout << -1 << endl;
+            continue;
+        }
 
-        cout << mn << ' ' << mx << endl;
+        cout << c/3 << endl;
+        int itr=0;
+        for(int i=0; i<n; i++){
+            if(!mis[i]) continue;
+            if(itr%3==0&&itr){
+                itr=0;
+                cout<<endl;
+            }
+
+            cout << i+1 << ' ';
+            ++itr;
+        }
+        cout << endl;
 
     }
+
 }

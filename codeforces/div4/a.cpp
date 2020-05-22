@@ -39,28 +39,20 @@ int main(){
     while(t--){
         int n;
         cin>>n;
-        int p[n];
-        int mn=1e6, mx=0;
-        int rec=0;
-        for(int i=0; i<n; i++){
-            cin>>p[i];
-            if(i>0){
-                if((p[i]-p[i-1])<=2){
-                    ++rec;
-                }else{
-                    ++rec;
-                    mx = max(mx, rec);
-                    mn = min(mn, rec);
-                    rec = 0;
-                }
+
+        vector<int> arr;
+        int i=1;
+        while(n){
+            if(n%10){
+                arr.pb(n%10*i);
             }
+
+            n/=10;
+            i*=10;
         }
 
-        ++rec;
-        mx = max(mx, rec);
-        mn = min(mn, rec);
-
-        cout << mn << ' ' << mx << endl;
-
-    }
+        cout << sz(arr) << endl;
+        for(auto i: arr) cout << i << ' ';
+        cout << endl;
+   }
 }

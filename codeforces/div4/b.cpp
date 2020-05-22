@@ -37,30 +37,15 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
-        int p[n];
-        int mn=1e6, mx=0;
-        int rec=0;
-        for(int i=0; i<n; i++){
-            cin>>p[i];
-            if(i>0){
-                if((p[i]-p[i-1])<=2){
-                    ++rec;
-                }else{
-                    ++rec;
-                    mx = max(mx, rec);
-                    mn = min(mn, rec);
-                    rec = 0;
-                }
-            }
+        int n, k;
+        cin>>n>>k;
+
+        if(n%2!=0){
+            cout << "NO" << endl;
+            continue;
         }
 
-        ++rec;
-        mx = max(mx, rec);
-        mn = min(mn, rec);
-
-        cout << mn << ' ' << mx << endl;
 
     }
+
 }

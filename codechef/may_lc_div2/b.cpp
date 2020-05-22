@@ -37,30 +37,32 @@ int main(){
     int t;
     cin>>t;
     while(t--){
-        int n;
-        cin>>n;
-        int p[n];
-        int mn=1e6, mx=0;
-        int rec=0;
-        for(int i=0; i<n; i++){
-            cin>>p[i];
-            if(i>0){
-                if((p[i]-p[i-1])<=2){
-                    ++rec;
-                }else{
-                    ++rec;
-                    mx = max(mx, rec);
-                    mn = min(mn, rec);
-                    rec = 0;
-                }
-            }
+        int n, q;
+        cin>>n>>q;
+        string s;
+        cin>>s;
+        unordered_map<char, int> cnt;
+        for(auto i: s) ++cnt[i];
+
+        unordered_map<int, int> freq;
+        for(auto i: cnt){
+            /* cout << i.fi << ' ' << i.se << endl; */
+            ++freq[i.se];
         }
+        /* cout << endl; */
 
-        ++rec;
-        mx = max(mx, rec);
-        mn = min(mn, rec);
+        /* for(auto i: freq) cout << i.fi << ' ' << i.se << endl; */
 
-        cout << mn << ' ' << mx << endl;
+        for(int i=0, c; i<q; i++){
+            cin>>c;
+            int sm=0;
+            for(auto i: freq){
+                if(i.fi<c) sm+=i.fi * i.se;
+                else sm+=c * i.se;
+            }
 
+            cout << n - sm << endl;
+        }
     }
+
 }
