@@ -1,0 +1,9 @@
+Topics Touched:
+
+- Fibonacci numbers
+- Prime Factors
+- Palindromic number
+- Pythagorean triplet
+    Euclid's formula
+        a = (m*m) - (n*n), b = 2 * m * n, c = (m*m) + (n*n) where m > n (Out: Primitive triplets)
+- Sieve of Eratosthenes
