@@ -6,7 +6,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define endl '\n'
 #define fi first
 #define se second
 #define sz(x) ((int)(x).size())
@@ -35,4 +34,23 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    int t;cin>>t;
+    while(t--){
+        ll n;cin>>n;
+        ll ans = -1;
+        ll c = 0;
+        while(n>=2050){
+            ll size = trunc(log10(n)) + 1 - 4;
+            ll pow = size <= 0 ? 1 : 10*size;
+            cout << n << " " << size << endl;
+            if(n - (2050 * pow) == 0){
+                ans = 1 + c;
+                break;
+            }else{
+                n = n % (2050 * pow);
+                ++c;
+            }
+        }
+        cout << ans << endl;
+    }
 }

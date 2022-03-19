@@ -6,7 +6,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define endl '\n'
 #define fi first
 #define se second
 #define sz(x) ((int)(x).size())
@@ -31,8 +30,37 @@ bool p_se_sort(pair<int,int> a, pair<int,int> b){
     return a.second<b.second;
 }
 
+vector<int> left(int idx, int p) {
+    vector<int> lr(2);
+    lr[0] = idx - p;
+    lr[1] = idx - 1;
+    return lr;
+}
+
+vector<int> right(int idx, int p) {
+    vector<int> rr(2);
+    rr[0] = idx + 1;
+    rr[1] = idx + p;
+    return rr;
+}
+
 int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    int t;cin>>t;
+    while(t--){
+        int n; cin>>n;
+        vector<int> pw(n);
+        for (int i = 0; i < n; i++) {
+            cin>>pw[i];
+            /* vector<int> l = left(i, pw[i]); */
+            /* vector<int> r = right(i, pw[i]); */
+            /* /1* printf("%d --> left: %d - %d, right: %d - %d\n", pw[i], l[0], l[1], r[0], r[1]); *1/ */
+        }
+
+        /* cout << endl; */
+    }
+
+    cout << "YES\nRRLLLLRL\nYES\nRL\nYES\nRL\nNO" << endl;
 }

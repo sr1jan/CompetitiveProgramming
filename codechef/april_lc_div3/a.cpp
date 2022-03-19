@@ -6,7 +6,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#define endl '\n'
 #define fi first
 #define se second
 #define sz(x) ((int)(x).size())
@@ -35,4 +34,12 @@ int main(){
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
+    set<int> col;
+    for(int i=0;i<3;++i){
+        int num;
+        cin>>num;
+        col.insert(num);
+    }
+    if(col.size()!=3) cout << "YES" << endl;
+    else cout << "NO" << endl;
 }
